@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Image Classification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Brain Tumor Image Classification</h1>
+        <p class="description">Project Computer Vision created by Djibril Ndour: The objective is to classify the brain based on inserted images</p>
+        <form method="post" enctype="multipart/form-data" class="space-y-4">
+            <div class="form-group">
+                <label for="model" class="form-label">Select Model</label>
+                <select name="model" id="model" class="form-select">
+                    <option value="pytorch">PyTorch Model</option>
+                    <option value="tensorflow">TensorFlow Model</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" name="image" id="image" accept="image/*" class="form-input">
+            </div>
+            <button type="submit" class="submit-btn">Classify</button>
+        </form>
+        {% if prediction %}
+        <div class="prediction-box">
+            <h2 class="prediction-title">Prediction:</h2>
+            <p class="prediction-text">{{ prediction }}</p>
+        </div>
+        {% endif %}
+        {% if error %}
+        <div class="error-box">
+            <h2 class="error-title">Error:</h2>
+            <p class="error-text">{{ error }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
